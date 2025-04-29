@@ -49,7 +49,7 @@ public class MahasiswaDemo05 {
                 case 4:
                     // Melihat daftar tugas
                     System.out.println("Daftar Tugas:");
-                    System.out.println("Nama\tNIM\tKelas\tNilai");
+                    System.out.println("Nama\tNIM\tKelas");
                     stack.print();
                     break;
                 default:
