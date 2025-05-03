@@ -35,10 +35,12 @@ public class MahasiswaDemo05 {
                     Mahasiswa05 dinilai = stack.pop();
                     if (dinilai != null) {
                        System.out.println("Menilai tugas dari " + dinilai.nama);
-                        System.out.print("Maasukkan nilai (0-100) :  ");
+                        System.out.print("Masukkan nilai (0-100) :  ");
                           int nilai = input.nextInt();
                         dinilai.tugasDinilai(nilai);
                         System.out.printf("NIlai Tugas %s adalah  %d\n", dinilai.nama, nilai);
+                        String biner = stack.konversiDesimalKeBiner(nilai);
+                        System.out.println("Nilai biner Tugas " + biner);
                     }
                     break;
                 case 3:
