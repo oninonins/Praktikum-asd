@@ -60,11 +60,14 @@ public class SuratMain05 {
                     String cari = input.nextLine();
                     Surat05 hasil = stack.cariSurat(cari);
                     if (hasil != null) {
-                        System.out.println("Surat ditemukan: " + hasil.namaMahasiswa + " - " + hasil.kelas);
+                        System.out.println("Surat ditemukan: " + hasil.namaMahasiswa + " - " + hasil.kelas + " - " + hasil.jenisIzin + " - " + hasil.durasi + " hari");
                     }
 
                     break;
-
+                case 5:
+                    //keluar dari program
+                    System.out.println("Terima kasih telah menggunakan sistem surat izin.");
+                    break;
 
                 default:
                     System.out.println("Pilihan tidak valid!");
