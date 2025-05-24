@@ -106,8 +106,8 @@ int totalDilayani = 0;
             size--;
             totalDilayani++;
             return mhs;
-        
     }
+    
     //memanggil antrian 1 kali panggil terdiri dari 2 mahasiswa
     public void panggilAntrian() {
         if (isEmpty()) {
