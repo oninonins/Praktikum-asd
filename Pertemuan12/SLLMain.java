@@ -4,11 +4,7 @@ public class SLLMain {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         SingleLinkedList05 sll = new SingleLinkedList05();
-        int pilihan ;
-        //tanya berapa data yang akan dimasukkan
-        System.out.print("Masukkan jumlah data: ");
-        int jumlahData = input.nextInt();
-        input.nextLine(); 
+        int pilihan ; 
         do {
             System.out.println("Menu");
             System.out.println("1. Tambah Data Awal");
@@ -29,6 +25,7 @@ public class SLLMain {
                     String kelasAwal = input.nextLine();
                     System.out.print("Masukkan IPK: ");
                     double ipkAwal = input.nextDouble();
+                    input.nextLine();
                     sll.addFirst(new Mahasiswa05(nimAwal, namaAwal, kelasAwal, ipkAwal));
                     break;
                 case 2:
@@ -40,6 +37,7 @@ public class SLLMain {
                     String kelasAkhir = input.nextLine();
                     System.out.print("Masukkan IPK: ");
                     double ipkAkhir = input.nextDouble();
+                    input.nextLine();
                     sll.addLast(new Mahasiswa05(nimAkhir, namaAkhir, kelasAkhir, ipkAkhir));
                     break;
                 case 3:
@@ -53,6 +51,7 @@ public class SLLMain {
                     String kelasInsert = input.nextLine();
                     System.out.print("Masukkan IPK: ");
                     double ipkInsert = input.nextDouble();
+                    input.nextLine();
                     sll.insertAfter(keyInsert, new Mahasiswa05(nimInsert, namaInsert, kelasInsert, ipkInsert));
                     break;
                 case 4:

@@ -85,4 +85,97 @@ public class SingleLinkedList05 {
         }
 
     }
+
+    //mengakses data di index tertentu
+    public void getData(int index) {
+        NodeMahasiswa05 temp = head;
+        for (int i = 0; i < index; i++) {
+            temp = temp.next;
+        }
+        temp.data.tampilInformasi();
+    }
+
+    public int indexOf(String key){
+        NodeMahasiswa05 temp = head;
+        int index = 0;
+        while (temp != null && !temp.data.nama.equalsIgnoreCase(key)) {
+            if (temp.data.nim.equals(key)) {
+                return index;
+            }
+            temp = temp.next;
+            index++;
+        }
+
+        if (temp == null) {
+            return -1; 
+        } else {
+            return index; 
+        }
+    }
+
+    public void removeFirst() {
+        if (isEmpty()) {
+            System.out.println("Linked List Kosong, tidak dapat dihapus");
+        } else if (head == tail) {
+            head = tail = null;
+        } else {
+            head = head.next;
+        }
+    }
+
+    public void removeLast() {
+        if (isEmpty()) {
+            System.out.println("Linked List Kosong, tidak dapat dihapus");
+        } else if (head == tail) {
+            head = tail = null;
+        } else {
+            NodeMahasiswa05 temp = head;
+            while (temp.next != tail) {
+                temp = temp.next;
+            }
+            temp.next = null;
+            tail = temp;
+        }
+    }
+
+    public void remove(String key) {
+        if (isEmpty()) {
+            System.out.println("Linked List Kosong, tidak dapat dihapus");
+        } else {
+            NodeMahasiswa05 temp = head;
+            while (temp != null) {
+                if (temp.data.nim.equalsIgnoreCase(key) && (temp == head)) {
+                    this.removeFirst();
+                    break;
+                } else if (temp.data.nim.equalsIgnoreCase(key)) {
+                    temp.next = temp.next.next;
+                    if (temp.next == null) {
+                        tail = temp; // Update tail if we removed the last element
+                    }
+                    break;
+                }
+                temp = temp.next;
+            }
+        }
+    }
+
+    public void removeAt(int index) {
+        if (index == 0) {
+            removeFirst();
+        } else {
+            NodeMahasiswa05 temp = head;
+            for (int i = 0; i < index - 1; i++) {
+                temp = temp.next;
+            }
+            temp.next = temp.next.next;
+            if (temp.next == null) {
+                tail = temp;
+            }
+        }
+        
+    }
+
 }
+
+
+
