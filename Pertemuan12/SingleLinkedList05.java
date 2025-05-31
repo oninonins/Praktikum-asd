@@ -61,7 +61,7 @@ public class SingleLinkedList05 {
                 if (temp == tail) {
                     tail = ndInput; 
                 }
-                return;
+                break;
             }
             temp = temp.next;
         } while (temp != null);
@@ -99,9 +99,6 @@ public class SingleLinkedList05 {
         NodeMahasiswa05 temp = head;
         int index = 0;
         while (temp != null && !temp.data.nama.equalsIgnoreCase(key)) {
-            if (temp.data.nim.equals(key)) {
-                return index;
-            }
             temp = temp.next;
             index++;
         }
@@ -150,7 +147,7 @@ public class SingleLinkedList05 {
                 } else if (temp.data.nim.equalsIgnoreCase(key)) {
                     temp.next = temp.next.next;
                     if (temp.next == null) {
-                        tail = temp; // Update tail if we removed the last element
+                        tail = temp; 
                     }
                     break;
                 }

@@ -1,10 +1,12 @@
 package Pertemuan12;
+
 import java.util.Scanner;
-public class SLLMain {
+
+public class MainLinkedList {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         SingleLinkedList05 sll = new SingleLinkedList05();
-        int pilihan ; 
+          int pilihan ; 
         do {
             System.out.println("Menu");
             System.out.println("1. Tambah Data Awal");
@@ -24,7 +26,7 @@ public class SLLMain {
                     System.out.print("Masukkan Kelas: ");
                     String kelasAwal = input.nextLine();
                     System.out.print("Masukkan IPK: ");
-                    double ipkAwal = input.nextDouble();
+                    double ipkAwal = Double.parseDouble(input.nextLine());
                     input.nextLine();
                     sll.addFirst(new Mahasiswa05(nimAwal, namaAwal, kelasAwal, ipkAwal));
                     break;
@@ -36,8 +38,7 @@ public class SLLMain {
                     System.out.print("Masukkan Kelas: ");
                     String kelasAkhir = input.nextLine();
                     System.out.print("Masukkan IPK: ");
-                    double ipkAkhir = input.nextDouble();
-                    input.nextLine();
+                    double ipkAkhir = Double.parseDouble(input.nextLine());
                     sll.addLast(new Mahasiswa05(nimAkhir, namaAkhir, kelasAkhir, ipkAkhir));
                     break;
                 case 3:
@@ -50,8 +51,7 @@ public class SLLMain {
                     System.out.print("Masukkan Kelas: ");
                     String kelasInsert = input.nextLine();
                     System.out.print("Masukkan IPK: ");
-                    double ipkInsert = input.nextDouble();
-                    input.nextLine();
+                    double ipkInsert = Double.parseDouble(input.nextLine());
                     sll.insertAfter(keyInsert, new Mahasiswa05(nimInsert, namaInsert, kelasInsert, ipkInsert));
                     break;
                 case 4:
@@ -68,7 +68,23 @@ public class SLLMain {
             }
         }while (pilihan != 0 ); 
 
+        
+        System.out.println("\nData index 1:");
+        sll.getData(1);
 
-      
+        
+        System.out.println("Data mahasiswa an Bimon berada di index: " + sll.indexOf("Bimon"));
+
+        
+       
+        sll.removeFirst();
+        sll.removeLast();
+        sll.print();
+
+
+        sll.removeAt(0);
+        sll.print();
+
+       
     }
 }
