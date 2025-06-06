@@ -14,6 +14,17 @@ public class DoubleLinkedLists05 {
         return head == null;
     }
 
+    //size() untuk menghitung jumlah node dalam linked list
+    public int size() {
+        int ukuran = 0;
+        Node05 current = head;
+        while (current != null) {
+            ukuran++;
+            current = current.next;
+        }
+        return ukuran;
+    }
+
     public void addFirst(Mahasiswa05 data) {
         Node05 newNode = new Node05(data);
         if (isEmpty()) {
@@ -33,30 +44,6 @@ public class DoubleLinkedLists05 {
             tail.next = newNode;
             newNode.prev = tail;
             tail = newNode;
-        }
-    }
-
-    public void add(Mahasiswa05 data, int index) {
-        if (isEmpty() || index == 0) {
-            addFirst(data);
-        } else {
-            Node05 current = head;
-            int i = 0;
-            while (i < index - 1 && current != null) {
-                current = current.next;
-                i++;
-            }
-            if (current == null) {
-                addLast(data);
-            } else {
-                Node05 newNode = new Node05(data);
-                newNode.next = current.next;
-                newNode.prev = current;
-                if (current.next != null) {
-                    current.next.prev = newNode;
-                }
-                current.next = newNode;
-            }
         }
     }
 
@@ -161,5 +148,136 @@ public class DoubleLinkedLists05 {
         }
         System.out.println("Data sudah berhasil dihapus. Data yang terhapus adalah:");
         deletedData.tampil();
+    }
+
+    //add() untuk menambahkan data di note tertentu 
+    public void add(Mahasiswa05 data, int index) {
+        if (index < 0) {
+            System.out.println("Indeks tidak valid.");
+            return;
+        }
+        if (index == 0) {
+            addFirst(data);
+            return;
+        }
+    
+        Node05 current = head;
+        int i = 0;
+        while (i < index - 1 && current != null) {
+            current = current.next;
+            i++;
+        }
+    
+        if (current == null) {
+            System.out.println("Indeks melebihi panjang list.");
+            return;
+        }
+    
+        Node05 newNode = new Node05(data);
+        newNode.next = current.next;
+        newNode.prev = current;
+        if (current.next != null) {
+            current.next.prev = newNode;
+        }
+        current.next = newNode;
+
+        if (newNode.next == null) {
+            tail = newNode; // Update tail jika node baru adalah node terakhir
+        }
+    }
+
+    //removeAfter() untuk menghapus data setelah node tertentu
+    public void removeAfter(String keyNim) {
+        Node05 current = head;
+        while (current != null && !current.data.nim.equals(keyNim)) {
+            current = current.next;
+        }
+    
+        if (current == null || current.next == null) {
+            System.out.println("Tidak ada data setelah NIM " + keyNim);
+            return;
+        }
+    
+        Node05 deletedNode = current.next;
+        System.out.println("Data sudah berhasil dihapus. Data yang terhapus adalah:");
+        deletedNode.data.tampil();
+    
+        current.next = deletedNode.next;
+        if (deletedNode.next != null) {
+            deletedNode.next.prev = current;
+        } else {
+            tail = current; // Update tail jika node yang dihapus adalah tail
+        }
+    }
+
+    public void remove(int index) {
+        if (isEmpty() || index < 0) {
+            System.out.println("Indeks tidak valid atau list kosong.");
+            return;
+        }
+        if (index == 0) {
+            removeFirst();
+            return;
+        }
+    
+        Node05 current = head;
+        int i = 0;
+        while (i < index && current != null) {
+            current = current.next;
+            i++;
+        }
+    
+        if (current == null) {
+            System.out.println("Indeks melebihi panjang list.");
+            return;
+        }
+    
+        System.out.println("Data sudah berhasil dihapus. Data yang terhapus adalah:");
+        current.data.tampil();
+    
+        if (current.prev != null) {
+            current.prev.next = current.next;
+        }
+        if (current.next != null) {
+            current.next.prev = current.prev;
+        } else {
+            tail = current.prev; // Update tail jika node terakhir dihapus
+        }
+    }
+
+    public Mahasiswa05 getFirst() {
+        if (isEmpty()) {
+            System.out.println("List kosong.");
+            return null;
+        }
+        return head.data;
+    }
+    
+    public Mahasiswa05 getLast() {
+        if (isEmpty()) {
+            System.out.println("List kosong.");
+            return null;
+        }
+        return tail.data;
+    }
+    
+    public Mahasiswa05 getIndex(int index) {
+        if (isEmpty() || index < 0) {
+            System.out.println("Indeks tidak valid atau list kosong.");
+            return null;
+        }
+    
+        Node05 current = head;
+        int i = 0;
+        while (i < index && current != null) {
+            current = current.next;
+            i++;
+        }
+    
+        if (current == null) {
+            System.out.println("Indeks melebihi panjang list.");
+            return null;
+        }
+        return current.data;
     }
 } 
