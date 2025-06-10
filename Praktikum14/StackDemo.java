@@ -19,7 +19,7 @@ public class StackDemo {
         System.out.println(temp.toString());
     }
 
-    book temp2 = books.pop();
+    Book temp2 = books.pop();
 
     if (temp2 != null){
         System.out.println(temp2.toString());
@@ -37,6 +37,6 @@ public class StackDemo {
    //pencarian 
    int position = books.search(book2);
    System.out.println("posisi book2 dari atas stack :" + position);
-    
-    
+    }
+
 }

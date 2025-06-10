@@ -25,7 +25,7 @@ public class DemoArrayList {
             System.out.println(cust.toString());
         }
 
-        ArrayList<Customer> newCustomers = new ArrayList<>();Add commentMore actions
+        ArrayList<Customer> newCustomers = new ArrayList<>();
         newCustomers.add(new Customer(201, "Della"));
         newCustomers.add(new Customer(202, "Victor"));
         newCustomers.add(new Customer(203, "Sarah"));
